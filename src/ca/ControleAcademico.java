@@ -1,5 +1,9 @@
 package ca;
 
+import model.Aluno;
+import model.Disciplina;
+import model.Professor;
+
 import java.util.List;
 
 public class ControleAcademico {
