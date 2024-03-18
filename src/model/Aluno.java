@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 public class Aluno {
     private int id;
     private String nome;
@@ -26,6 +28,13 @@ public class Aluno {
     }
 
     public void setMatricula(String matricula) {
+        this.matricula = matricula;
+    }
+
+
+    public Aluno(int id, String nome, String matricula) {
+        this.id = id;
+        this.nome = nome;
         this.matricula = matricula;
     }
 }

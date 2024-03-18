@@ -1,57 +1,33 @@
 package tests;
 
 import model.Aluno;
-import model.Disciplina;
-import model.Professor;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class AlunoTest {
-    private Aluno aluno;
-    private Professor professor;
-    private Disciplina disciplina;
-    private final String horario = "12:00";
-
-
+    private Aluno alunoTest;
     @BeforeEach
     void setup(){
-        professor = new Professor("Diego");
-        aluno = new Aluno("João");
-        disciplina = new Disciplina("Algoritmos", professor);
+        alunoTest = new Aluno(1,"Fabiano Rocha","212080190");
     }
-
-    @Nested
-    class getHorarioAluno{
-        @Test
-        void getHorarioAlunoVazio() {
-            assertEquals(aluno.getHorarioAluno(), "");
-        }
-        @Test
-        void getHorarioAlunoPreenchido(){
-            aluno.adicionarDisciplina(disciplina,"12:30");
-            assertFalse(aluno.getHorarioAluno().isEmpty());
-        }
-    }
-
 
     @Test
-    void adicionarDisciplina() {
-        aluno.adicionarDisciplina(disciplina,horario);
-        assertEquals(aluno.getHorarioAluno(), "Algoritmos: "+horario+"\n");
+    void setGetId() {
+        alunoTest.setId(9);
+        assertEquals(alunoTest.getId(), 9);
     }
 
-    @Nested
-    class getNome{
-        @Test
-        void getNomeCorreto() {
-            assertEquals(aluno.getNome(), "João");
-        }
-        @Test
-        void getNomeIncorreto() {
-            assertNotEquals(aluno.getNome(), "Jorge");
-        }
+    @Test
+    void setGetNome() {
+        alunoTest.setNome("Rodrigo Juliano");
+        assertEquals(alunoTest.getNome(),"Rodrigo Juliano");
+    }
+
+    @Test
+    void setGetMatricula() {
+        alunoTest.setMatricula("212080111");
+        assertEquals(alunoTest.getMatricula(),"212080111");
     }
 }

@@ -1,8 +1,5 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Disciplina {
     private int id;
     private String nome;
@@ -29,6 +26,12 @@ public class Disciplina {
     }
 
     public void setCargaHoraria(int cargaHoraria) {
+        this.cargaHoraria = cargaHoraria;
+    }
+
+    public Disciplina(int id, String nome, int cargaHoraria) {
+        this.id = id;
+        this.nome = nome;
         this.cargaHoraria = cargaHoraria;
     }
 }
