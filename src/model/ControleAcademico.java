@@ -3,27 +3,35 @@ package model;
 import tools.Horario;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ControleAcademico {
-    private ArrayList<Professor> professores;
-    private ArrayList<Aluno> alunos;
-    private ArrayList<Turma> turmas;
-    private ArrayList<Disciplina> disciplinas;
+    private final ArrayList<Professor> professores = new ArrayList<>();
+    private final ArrayList<Aluno> alunos = new ArrayList<>();
+    private final ArrayList<Turma> turmas = new ArrayList<>();
+    private final ArrayList<Disciplina> disciplinas = new ArrayList<>();
 
 
-    public void criarProfessor(int id, String nome){
+    public void criarProfessor(String nome){
+        int id = professores.size()+1;
         Professor professor = new Professor(id, nome);
         this.professores.add(professor);
     }
 
-    public void criarAluno(int id, String nome, String matricula){
+    public void criarDiscilpina(String nome, int ch){
+        int id = disciplinas.size()+1;
+        Disciplina disciplina = new Disciplina(id, nome, ch);
+        this.disciplinas.add(disciplina);
+    }
+
+    public void criarAluno(String nome, String matricula){
+        int id = alunos.size()+1;
         Aluno aluno = new Aluno(id, nome, matricula);
         this.alunos.add(aluno);
     }
 
     public void criarTurma(Disciplina disciplina){
-        Turma turma = new Turma(disciplina);
+        int id = turmas.size()+1;
+        Turma turma = new Turma(disciplina, id);
         this.turmas.add(turma);
     }
 
@@ -43,7 +51,9 @@ public class ControleAcademico {
 
     public Turma getTurmaById(int id){
         for (Turma turma : turmas){
-            if (turma.getId() == id) return turma;
+            if (turma.getId() == id){
+                return turma;
+            }
         }
         return null;
     }
@@ -90,5 +100,11 @@ public class ControleAcademico {
         return horarioAluno;
     }
 
+    public Disciplina getDisciplinaById(int id){
+        for (Disciplina disciplina : disciplinas){
+            if (disciplina.getId() == id) return disciplina;
+        }
+        return null;
+    }
 }
 

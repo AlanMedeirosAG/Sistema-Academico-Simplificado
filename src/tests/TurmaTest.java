@@ -15,7 +15,7 @@ class TurmaTest {
     static Turma turmaTest;
     @BeforeAll
     static void setup(){
-        turmaTest = new Turma(null);
+        turmaTest = new Turma(null,1);
     }
     @Test
     void setGetDisciplina() {
@@ -50,7 +50,7 @@ class TurmaTest {
     void addGetAluno() {
         Aluno aluno1 = new Aluno(1,"Rodrigo","10101010");
         turmaTest.addAluno(aluno1);
-        assertEquals(turmaTest.getAlunos().getFirst(),aluno1);
+        assertEquals(turmaTest.getAlunos().getFirst().getMatricula(),aluno1.getMatricula());
     }
 
     @Test

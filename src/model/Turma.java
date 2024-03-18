@@ -8,8 +8,8 @@ public class Turma {
     private int id;
     private Disciplina disciplina;
     private Professor professor;
-    private ArrayList<Aluno> alunos;
-    private ArrayList<Horario> horarios;
+    private final ArrayList<Aluno> alunos;
+    private final ArrayList<Horario> horarios;
     private String sala;
 
     public Disciplina getDisciplina() {
@@ -61,9 +61,10 @@ public class Turma {
     public int getAlunosMatriculados(){
         return alunos.size();
     }
-    public Turma(Disciplina disciplina) {
+    public Turma(Disciplina disciplina, int id) {
         this.disciplina = disciplina;
         this.alunos = new ArrayList<>();
         this.horarios = new ArrayList<>();
+        this.id = id;
     }
 }

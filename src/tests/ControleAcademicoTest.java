@@ -1,7 +1,6 @@
 package tests;
 
 import model.*;
-import tools.Horario;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -13,36 +12,35 @@ import static org.junit.jupiter.api.Assertions.*;
 public class ControleAcademicoTest {
 
     private ControleAcademico controleAcademico;
-    private Turma turma;
 
 
     @BeforeEach
     void setUp() {
         controleAcademico = new ControleAcademico();
-        Disciplina disciplina = new Disciplina(5, "Matemática", 90);
-        controleAcademico.criarTurma(disciplina);
-        controleAcademico.criarAluno(1, "John", "12345678");
-        controleAcademico.criarProfessor(10,"Junior Morais");
+        controleAcademico.criarDiscilpina("Matemática", 90);
+        controleAcademico.criarTurma(controleAcademico.getDisciplinaById(1));
+        controleAcademico.criarAluno("John", "12345678");
+        controleAcademico.criarProfessor("Junior Morais");
     }
 
    @Nested
     class criarProfessor{
 
         @Test
-        void criarProfessorNãoNulo () {
-            controleAcademico.criarProfessor(01, "Diego");
+        void criarProfessorNaoNulo () {
+            controleAcademico.criarProfessor("Diego");
             Professor professorObtido = controleAcademico.getProfessorById(1);
             assertNotNull(professorObtido);// Garante que o professor não é nulo
         }
         @Test
         void verificarId() {
-            controleAcademico.criarProfessor(01, "Diego");
+            controleAcademico.criarProfessor("Diego");
             Professor professorObtido = controleAcademico.getProfessorById(1);
                 assertEquals(1, professorObtido.getId()); // Verifica o ID do professor
             }
        @Test
        void verificarNome() {
-           controleAcademico.criarProfessor(01, "Diego");
+           controleAcademico.criarProfessor("Diego");
            Professor professorObtido = controleAcademico.getProfessorById(1);
          assertEquals("Diego", professorObtido.getNome()); // Verifica o nome do professor
     }
@@ -53,19 +51,19 @@ public class ControleAcademicoTest {
 
     @Test
     void criarAlunoNãoNulo () {
-        controleAcademico.criarAluno(01, "John","12345678");
+        controleAcademico.criarAluno("John","12345678");
         Aluno alunoObtido = controleAcademico.getAlunoById(1);
         assertNotNull(alunoObtido);// Garante que o aluno não é nulo
     }
     @Test
     void verificarId() {
-        controleAcademico.criarAluno(01, "John","12345678");
+        controleAcademico.criarAluno("John","12345678");
         Aluno alunoObtido = controleAcademico.getAlunoById(1);
         assertEquals(1, alunoObtido.getId()); // Verifica o ID do aluno
     }
     @Test
     void verificarNome() {
-        controleAcademico.criarAluno(01, "John", "12345678");
+        controleAcademico.criarAluno("John", "12345678");
         Aluno alunoObtido = controleAcademico.getAlunoById(1);
         assertEquals("John", alunoObtido.getNome()); // Verifica o nome do aluno
         }
@@ -155,9 +153,9 @@ public class ControleAcademicoTest {
             Disciplina matematica = new Disciplina(1, "Matemática", 90);
             Disciplina fisica = new Disciplina(2, "Física", 90);
 
-            controleAcademico.criarAluno(1, "João", "123456");
-            controleAcademico.criarAluno(2, "Maria", "654321");
-            controleAcademico.criarAluno(3, "Pedro", "789456");
+            controleAcademico.criarAluno("João", "123456");
+            controleAcademico.criarAluno("Maria", "654321");
+            controleAcademico.criarAluno("Pedro", "789456");
 
             controleAcademico.criarTurma(matematica);
             controleAcademico.criarTurma(fisica);
